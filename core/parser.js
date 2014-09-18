@@ -1,6 +1,6 @@
-"use strict"
-
 (function() {
+    "use strict"
+
     module.exports = {
         parseMovieList: function(html) {
             var lines = html.split('\n');

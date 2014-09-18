@@ -1,17 +1,27 @@
-var Fetcher = require('../core/fetcher.js'),
-    fetcher = new Fetcher(),
-    MovieItem = require('../views/movie-item.js');
+var fetcher = new (require('../core/fetcher.js')),
+    MovieItem = require('../views/movie-item.js'),
+    movieContainer = document.getElementById('movies'),
+    pageNum = 1;
 
-fetcher.getMovieList(function(movies) {
-    movies.forEach(function(movie) {
-        var item = new MovieItem(movie);
+function handler(movies) {
+    if(movies && movies.length > 0) {
+        movies.forEach(function(movie) {
+            var item = new MovieItem(movie);
 
-        item.on('detail', function(e) {
-            fetcher.getDownloadLink(e.data.url, function(linkList) {
-                console.debug(linkList);
+            item.on('detail', function(e) {
+                fetcher.getDownloadLink(e.data.url, function(linkList) {
+                    console.debug(linkList);
+                });
             });
-        });
 
-        document.getElementById('movies').appendChild(item.dom);
-    });
+            movieContainer.appendChild(item.dom);
+        });
+        pageNum++;
+    }
+}
+
+fetcher.getMovieList(pageNum, handler);
+
+document.getElementById('btn_load_more').addEventListener('click', function() {
+    fetcher.getMovieList(pageNum, handler);
 });
