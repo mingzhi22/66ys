@@ -9,13 +9,17 @@
                 return /classlinkclass/.test(line);
             });
 
-            return lines.map(function(line) {
+            lines = lines.map(function(line) {
                 var tmp = line.match(/href="(.*?)".*?>(.*?)<\/a>/);
 
                 return {
                     url: tmp[1],
                     name: tmp[2]
                 };
+            });
+
+            return lines.filter(function(line) {
+                return line != false;
             });
         },
 
@@ -26,13 +30,21 @@
                 return /bgcolor="#(?:ddedfb|ffffbb)"/.test(line);
             });
 
-            return lines.map(function(line) {
+            lines = lines.map(function(line) {
                 var tmp = line.match(/href="(.*?)".*?>(.*?)<\/a>/);
 
-                return {
-                    url: tmp[1],
-                    name: tmp[2]
-                };
+                if(tmp) {
+                    return {
+                        url: tmp[1],
+                        name: tmp[2]
+                    };
+                } else {
+                    return false;
+                }
+            });
+
+            return lines.filter(function(line) {
+                return line != false;
             });
         }
     };
