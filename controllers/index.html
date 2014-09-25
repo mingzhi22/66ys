@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>66影视抓取器</title>
+    <script charset="utf-8" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script charset="utf-8" src="../bower_components/platform/platform.js"></script>
+
+    <link rel="import" href="../bower_components/core-icons/core-icons.html">
+    <link rel="import" href="../bower_components/core-list/core-list.html">
+    <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+    <link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
+    <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+    <link rel="import" href="../bower_components/paper-dialog/paper-dialog-transition.html">
+
+    <style type="text/css">
+    html, body {
+        margin: 0;
+        height: 100%;
+    }
+
+    #bd {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #movie_list {
+        flex: 1;
+        display: block;
+        height: 100%;
+    }
+
+    #movie_list .item {
+        height: 30px;
+        line-height: 30px;
+        position: relative;
+    }
+
+    #movie_list .selected {
+        background: sliver;
+    }
+    </style>
+</head>
+<body>
+    <div id="bd">
+        <core-list id="movie_list" height="30">
+            <template>
+                <div data-url="{{url}}" class="item {{ {selected: selected} | tokenList }}">
+                    <span>{{name}}</span>
+                    <paper-ripple fit></paper-ripple>
+                </div>
+            </template>
+        </core-list>
+        <paper-icon-button id="btn_load_more" icon="refresh" label="加载更多"></paper-icon-button>
+    </div>
+
+    <movie-detail-dialog id="movie_detail_dialog"></movie-detail-dialog>
+
+    <polymer-element name="movie-detail-dialog">
+        <template>
+            <style type="text/css">
+                paper-dialog {
+                    width: 400px;
+                }
+            </style>
+            <paper-dialog id="dialog" backdrop=true opened="{{opened}}" heading="{{heading}}">
+                <ul>
+                    <template repeat="{{s in data}}">
+                        <li>{{s.name}}</li>
+                    </template>
+                </ul>
+                <paper-button label="More Info..." dismissive></paper-button>
+                <paper-button label="Decline" affirmative></paper-button>
+                <paper-button label="Accept" affirmative autofocus></paper-button>
+            </paper-dialog>
+        </template>
+
+        <script charset="utf-8">
+            Polymer("movie-detail-dialog");
+        </script>
+    </polymer-element>
+
+    <script src="index.js"></script>
+</body>
+</html>
