@@ -41,6 +41,11 @@
     #movie_list .selected {
         background: sliver;
     }
+
+    #btn_load_more {
+        background: #0980f8;
+        color: #fff;
+    }
     </style>
 </head>
 <body>
@@ -62,18 +67,18 @@
         <template>
             <style type="text/css">
                 paper-dialog {
-                    width: 400px;
+                    width: 100%;
                 }
             </style>
             <paper-dialog id="dialog" backdrop=true opened="{{opened}}" heading="{{heading}}">
                 <ul>
                     <template repeat="{{s in data}}">
-                        <li>{{s.name}}</li>
+                        <li><a href="{{s.url}}" download>{{s.name}}</a></li>
                     </template>
                 </ul>
-                <paper-button label="More Info..." dismissive></paper-button>
-                <paper-button label="Decline" affirmative></paper-button>
-                <paper-button label="Accept" affirmative autofocus></paper-button>
+                <!--<paper-button label="More Info..." dismissive></paper-button>-->
+                <paper-button label="关闭" affirmative></paper-button>
+                <paper-button label="确定" affirmative autofocus></paper-button>
             </paper-dialog>
         </template>
 

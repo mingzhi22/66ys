@@ -14,7 +14,7 @@
 
                 return {
                     url: tmp[1],
-                    name: tmp[2]
+                    name: tmp[2].replace(/\[.*?\]/, '')
                 };
             });
 
