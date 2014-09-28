@@ -14,7 +14,7 @@
 
                 return {
                     url: tmp[1],
-                    name: tmp[2]
+                    name: tmp[2].replace(/\[.*?\]/, '')
                 };
             });
 
@@ -32,7 +32,7 @@
 
             lines = lines.map(function(line) {
                 var tmp = line.match(/href="(.*?)".*?>(.*?)<\/a>/);
-
+                
                 if(tmp) {
                     return {
                         url: tmp[1],

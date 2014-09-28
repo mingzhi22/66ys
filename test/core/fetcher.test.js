@@ -5,6 +5,8 @@ describe('测试抓取器', function() {
     var fetcher = new Fetcher(),
         pageNum = Math.floor(Math.random() * 30);
 
+    this.timeout(5000);
+
     it('抓取第1页视频列表', function(done) {
         fetcher.getMovieList(function(data) {
             expect(data).to.be.a('array');

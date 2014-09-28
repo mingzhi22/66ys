@@ -1,4 +1,6 @@
-/*var fetcher = new (require('../core/fetcher.js')),
+/*
+
+var fetcher = new (require('../core/fetcher.js')),
     MovieItem = require('../views/movie-item.js'),
     movieContainer = document.getElementById('movies'),
     pageNum = 1;
@@ -26,7 +28,9 @@ fetcher.getMovieList(pageNum, handler);
 
 document.getElementById('btn_load_more').addEventListener('click', function() {
     fetcher.getMovieList(pageNum, handler);
-});*/
+});
+
+*/
 
 var fetcher = new (require('../core/fetcher.js')),
     movies = [],
