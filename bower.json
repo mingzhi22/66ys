@@ -19,11 +19,12 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#~0.4.1",
-    "core-list": "Polymer/core-list#~0.4.1",
-    "jquery": "~2.1.1",
-    "paper-icon-button": "Polymer/paper-icon-button#~0.4.1",
-    "paper-ripple": "Polymer/paper-ripple#~0.4.1",
-    "paper-dialog": "Polymer/paper-dialog#~0.4.1"
+    "polymer": "Polymer/polymer",
+    "core-list": "Polymer/core-list",
+    "jquery": "",
+    "paper-icon-button": "Polymer/paper-icon-button",
+    "paper-ripple": "Polymer/paper-ripple",
+    "paper-dialog": "Polymer/paper-dialog",
+    "paper-button": "Polymer/paper-button"
   }
 }

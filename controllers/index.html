@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <title>66影视抓取器</title>
     <script charset="utf-8" src="../bower_components/jquery/dist/jquery.js"></script>
-    <script charset="utf-8" src="../bower_components/platform/platform.js"></script>
+    <script charset="utf-8" src="../bower_components/webcomponentsjs/webcomponents.js"></script>
 
     <link rel="import" href="../bower_components/core-icons/core-icons.html">
     <link rel="import" href="../bower_components/core-list/core-list.html">
@@ -13,6 +13,7 @@
     <link rel="import" href="../bower_components/paper-ripple/paper-ripple.html">
     <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
     <link rel="import" href="../bower_components/paper-dialog/paper-dialog-transition.html">
+    <link rel="import" href="../bower_components/paper-button/paper-button.html">
 
     <style type="text/css">
     html, body {
@@ -35,7 +36,6 @@
     #movie_list .item {
         height: 30px;
         line-height: 30px;
-        position: relative;
     }
 
     #movie_list .selected {
@@ -52,9 +52,9 @@
     <div id="bd">
         <core-list id="movie_list" height="30">
             <template>
-                <div data-url="{{url}}" class="item {{ {selected: selected} | tokenList }}">
-                    <span>{{name}}</span>
-                    <paper-ripple fit></paper-ripple>
+                <div data-url="{{model.url}}" class="item {{ {selected: selected} | tokenList }}">
+                    <span>{{model.name}}</span>
+                    <!--<paper-ripple fit></paper-ripple>-->
                 </div>
             </template>
         </core-list>
@@ -70,15 +70,15 @@
                     width: 100%;
                 }
             </style>
-            <paper-dialog id="dialog" backdrop=true opened="{{opened}}" heading="{{heading}}">
+            <paper-dialog closeSelector="[affirmative]" id="dialog" backdrop=true opened="{{opened}}" heading="{{heading}}">
                 <ul>
                     <template repeat="{{s in data}}">
                         <li><a href="{{s.url}}" download>{{s.name}}</a></li>
                     </template>
                 </ul>
                 <!--<paper-button label="More Info..." dismissive></paper-button>-->
-                <paper-button label="关闭" affirmative></paper-button>
-                <paper-button label="确定" affirmative autofocus></paper-button>
+                <paper-button affirmative>关闭</paper-button>
+                <paper-button affirmative autofocus>确定</paper-button>
             </paper-dialog>
         </template>
 
