@@ -7,7 +7,7 @@ var parseMovieList = require('./parser.js').parseMovieList,
 
 function Fetcher() {
     this._res = '1080';
-    this._origin = 'http://www.66ys.cc';
+    this._origin = 'http://www.dygang.com';
 }
 
 Fetcher.prototype._getListPageURL = function(pageNum) {

@@ -26,5 +26,8 @@
     "paper-ripple": "Polymer/paper-ripple",
     "paper-dialog": "Polymer/paper-dialog",
     "paper-button": "Polymer/paper-button"
+  },
+  "resolutions": {
+    "webcomponentsjs": "0.7.12"
   }
 }
